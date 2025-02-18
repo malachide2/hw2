@@ -4,7 +4,6 @@
 #include <algorithm>
 #include "util.h"
 
-using namespace std;
 std::string convToLower(std::string src)
 {
     std::transform(src.begin(), src.end(), src.begin(), ::tolower);
@@ -15,16 +14,25 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
+    std::set<std::string> output;
+    std::string           currString;
+    currString.resize(rawWords.size());
 
+    for (auto character : rawWords) {
+        if (ispunct(character) || character == ' ') {
+            if (currString.size() > 1)
+                output.insert(currString);
+            currString.clear();
+        }
+        else {
+            currString += character;
+        }
+    }
+    if (currString.size() > 1)
+        output.insert(currString);
+    currString.clear();
 
-
-
-
-
-
-
-
-
+    return output;
 }
 
 /**************************************************
