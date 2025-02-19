@@ -28,7 +28,7 @@ std::set<std::string> Clothing::keywords() const
 
 std::string Clothing::displayString() const
 {
-	return name_ + " (Clothing)\n" + d_size + "\nBrand: " + d_brand + "\nPrice: " + std::to_string(price_) + "\tQuantity: " + std::to_string(qty_);
+	return name_ + "\Size: " + d_size + " Brand: " + d_brand + "\n" + std::to_string(price_) + " " + std::to_string(qty_) + " left";
 }
 
 void Clothing::dump(std::ostream& os) const

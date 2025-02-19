@@ -30,7 +30,7 @@ std::set<std::string> Book::keywords() const
 
 std::string Book::displayString() const
 {
-	return name_ + " (Book)\n" + d_author + "\nISBN: " + d_ISBN + "\nPrice: " + std::to_string(price_) + "\tQuantity: " + std::to_string(qty_);
+	return name_ + "\nAuthor: " + d_author + " ISBN: " + d_ISBN + "\n" + std::to_string(price_) + " " + std::to_string(qty_) + " left";
 }
 
 void Book::dump(std::ostream& os) const
