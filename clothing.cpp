@@ -14,14 +14,19 @@ Clothing::~Clothing() {}
 
 std::set<std::string> Clothing::keywords() const
 {
-	std::set<std::string> nameKeywords = parseStringToWords(name_);
-	std::set<std::string> brandKeywords = parseStringToWords(d_brand);
+	std::string tmpName = name_;
+	std::string tmpBrand = d_brand;
+	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), std::tolower);
+	std::transform(tmpBrand.begin(), tmpBrand.end(), tmpBrand.begin(), std::tolower);
+	
+	std::set<std::string> nameKeywords = parseStringToWords(tmpName);
+	std::set<std::string> brandKeywords = parseStringToWords(tmpBrand);
 	return setUnion(nameKeywords, brandKeywords);
 }
 
 std::string Clothing::displayString() const
 {
-	return name_ + " (Clothing)\n" + d_size + "\nISBN: " + d_brand + "\nPrice: " + std::to_string(price_) + "\tQuantity: " + std::to_string(qty_);
+	return name_ + " (Clothing)\n" + d_size + "\nBrand: " + d_brand + "\nPrice: " + std::to_string(price_) + "\tQuantity: " + std::to_string(qty_);
 }
 
 void Clothing::dump(std::ostream& os) const

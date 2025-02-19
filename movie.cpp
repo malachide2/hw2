@@ -14,14 +14,19 @@ Movie::~Movie() {}
 
 std::set<std::string> Movie::keywords() const
 {
-	std::set<std::string> output = parseStringToWords(name_);
-	output.insert(d_genre);
+	std::string tmpName = name_;
+	std::string tmpGenre = d_genre;
+	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), std::tolower);
+	std::transform(tmpGenre.begin(), tmpGenre.end(), tmpGenre.begin(), std::tolower);
+
+	std::set<std::string> output = parseStringToWords(tmpName);
+	output.insert(tmpGenre);
 	return output;
 }
 
 std::string Movie::displayString() const
 {
-	return name_ + " (Movie)\n" + d_genre + "\nISBN: " + d_rating + "\nPrice: " + std::to_string(price_) + "\tQuantity: " + std::to_string(qty_);
+	return name_ + " (Movie)\n" + d_genre + "\nRating: " + d_rating + "\nPrice: " + std::to_string(price_) + "\tQuantity: " + std::to_string(qty_);
 }
 
 void Movie::dump(std::ostream& os) const
