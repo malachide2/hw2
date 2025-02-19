@@ -3,7 +3,8 @@
 #include <set>
 #include "product.h"
 
-class Book : public Product {
+class Book : public Product
+{
 public:
 	Book(const std::string category, const std::string name, double price, int qty, const std::string ISBN, const std::string author);
 	~Book();
@@ -13,4 +14,4 @@ public:
 protected:
 	std::string d_ISBN;
 	std::string d_author;
-}
+};
