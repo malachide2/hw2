@@ -22,7 +22,7 @@ std::string Book::displayString() const
 	return name_ + " (Book)\n" + d_author + "\nISBN: " + d_ISBN + "\nPrice: " + price_ + "\tQuantity: " + qty_;
 }
 
-void dump(std::ostream& os) const
+void Book::dump(std::ostream& os) const
 {
-	os << "book\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << ISBN << "\n" << d_author;
+	os << "book\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << d_ISBN << "\n" << d_author;
 }
