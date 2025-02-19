@@ -5,12 +5,12 @@ MyDataStore::~MyDataStore()
 
 }
 
-void MyDataStore::AddProduct(Product* p)
+void MyDataStore::addProduct(Product* p)
 {
 
 }
 
-void MyDataStore::AddUser(User* u)
+void MyDataStore::addUser(User* u)
 {
 
 }
