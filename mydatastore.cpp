@@ -1,26 +1,26 @@
 #include "mydatastore.h"
 
-~MyDataStore()
+MyDataStore::~MyDataStore()
 {
 
 }
 
-void AddProduct(Product* p)
+void MyDataStore::AddProduct(Product* p)
 {
 
 }
 
-void AddUser(User* u)
+void MyDataStore::AddUser(User* u)
 {
 
 }
 
-std::vector<Product*> search(std::vector<std::string>& terms, int type)
+std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int type)
 {
 
 }
 
-void dump(std::ostream& ofile)
+void MyDataStore::dump(std::ostream& ofile)
 {
 
 }
