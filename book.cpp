@@ -12,7 +12,7 @@ Book::~Book() {}
 
 std::set<std::string> Book::keywords() const
 {
-	std::set<std::string> output = parseStringToWords(d_author);
+	std::set<std::string> output = setUnion(parseStringToWords(name_), parseStringToWords(d_author));
 	output.insert(d_ISBN);
 	return output;
 }
