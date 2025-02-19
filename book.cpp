@@ -19,10 +19,10 @@ std::set<std::string> Book::keywords() const
 
 std::string Book::displayString() const
 {
-	return name_ + " (Book)\n" + d_author + "\nISBN: " + d_ISBN + "\nPrice: " + price_ + "\tQuantity: " + qty_;
+	return name_ + " (Book)\n" + d_author + "\nISBN: " + d_ISBN + "\nPrice: " + std::to_string(price_) + "\tQuantity: " + std::to_string(qty_);
 }
 
 void Book::dump(std::ostream& os) const
 {
-	os << "book\n" << name_ << "\n" << std::to_string(price_) << "\n" << std::to_string(qty_) << "\n" << d_ISBN << "\n" << d_author;
+	os << "book\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << d_ISBN << "\n" << d_author;
 }
