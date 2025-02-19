@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <set>
+#include <algorithm>
+#include <cctype>
 #include "product.h"
 #include "util.h"
 
