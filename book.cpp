@@ -17,9 +17,9 @@ std::set<std::string> Book::keywords() const
 	std::string tmpName = name_;
 	std::string tmpAuthor = d_author;
 	std::string tmpISBN = d_ISBN;
-	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), std::tolower);
-	std::transform(tmpAuthor.begin(), tmpAuthor.end(), tmpAuthor.begin(), std::tolower);
-	std::transform(tmpISBN.begin(), tmpISBN.end(), tmpISBN.begin(), std::tolower);
+	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), [](unsigned char c) { return std::tolower(c); });
+	std::transform(tmpAuthor.begin(), tmpAuthor.end(), tmpAuthor.begin(), [](unsigned char c) { return std::tolower(c); });
+	std::transform(tmpISBN.begin(), tmpISBN.end(), tmpISBN.begin(), [](unsigned char c) { return std::tolower(c); });
 	
 	std::set<std::string> nameKeywords = parseStringToWords(tmpName);
 	std::set<std::string> authorKeywords = parseStringToWords(tmpAuthor);

@@ -18,8 +18,8 @@ std::set<std::string> Movie::keywords() const
 {
 	std::string tmpName = name_;
 	std::string tmpGenre = d_genre;
-	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), std::tolower);
-	std::transform(tmpGenre.begin(), tmpGenre.end(), tmpGenre.begin(), std::tolower);
+	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), [](unsigned char c) { return std::tolower(c); });
+	std::transform(tmpGenre.begin(), tmpGenre.end(), tmpGenre.begin(), [](unsigned char c) { return std::tolower(c); });
 
 	std::set<std::string> output = parseStringToWords(tmpName);
 	output.insert(tmpGenre);
