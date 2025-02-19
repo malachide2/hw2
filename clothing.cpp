@@ -14,7 +14,9 @@ Clothing::~Clothing() {}
 
 std::set<std::string> Clothing::keywords() const
 {
-	return setUnion(parseStringToWords(name_), parseStringToWords(d_brand));
+	std::set<std::string> nameKeywords = parseStringToWords(name_);
+	std::set<std::string> brandKeywords = parseStringToWords(d_brand);
+	return setUnion(nameKeywords, brandKeywords);
 }
 
 std::string Clothing::displayString() const
