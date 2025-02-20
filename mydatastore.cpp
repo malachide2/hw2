@@ -3,7 +3,13 @@
 
 MyDataStore::~MyDataStore()
 {
+	for (auto product : d_products) {
+		delete product;
+	}
 
+	for (auto userPair : d_user) {
+		delete userPair.second;
+	}
 }
 
 void MyDataStore::addProduct(Product* p)
