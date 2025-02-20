@@ -5,6 +5,7 @@
 class MyDataStore : public DataStore
 {
 public:
+	MyDataStore();
 	~MyDataStore();
 	void addProduct(Product* p) override;
 	void addUser(User* u) override;

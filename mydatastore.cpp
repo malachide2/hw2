@@ -1,6 +1,11 @@
 #include "mydatastore.h"
 #include "util.h"
 
+MyDataStore::MyDataStore()
+{
+
+}
+
 MyDataStore::~MyDataStore()
 {
 
