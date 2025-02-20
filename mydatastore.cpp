@@ -8,7 +8,7 @@ MyDataStore::~MyDataStore()
 
 void MyDataStore::addProduct(Product* p)
 {
-	for (auto keyword& : p->keywords()) {
+	for (auto& keyword : p->keywords()) {
 		if (d_keywordMapping.find(keyword) == d_keywordMapping.end())
 			d_keywordMapping.emplace(keyword, std::vector<Product*>);
 		d_keywordMapping[keyword].insert(p);
@@ -26,7 +26,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 	std::vector<Product*> output;
 	std::set<Product*>	  outputSet;
 	bool tmpFlag = false; // Used in intersection to see if at least one set has been found
-	for (auto term& : terms) {
+	for (auto& term : terms) {
 		if (d_keywordMapping.find(term) == d_keywordMapping.end())
 			continue;
 		if (type == 0) {
@@ -57,7 +57,7 @@ void MyDataStore::dump(std::ostream& ofile)
 	}
 	ofile << "</products>\n<users>\n";
 	for (auto userPair : d_userCart) {
-		userPair->dump(ofile);
+		userPair.first->dump(ofile);
 	}
 	ofile << "</users>";
 }
