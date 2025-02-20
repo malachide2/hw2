@@ -18,8 +18,11 @@ void MyDataStore::addProduct(Product* p)
 
 void MyDataStore::addUser(User* u)
 {
-	d_user.emplace(u->getName(), u);
-	d_userCart.emplace(u->getName(), std::queue<Product*>());
+	std::string tmpName = u->getName();
+	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), [](unsigned char c) { return std::tolower(c); });
+
+	d_user.emplace(tmpName, u);
+	d_userCart.emplace(tmpName, std::queue<Product*>());
 }
 
 std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int type)
