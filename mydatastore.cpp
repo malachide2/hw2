@@ -70,9 +70,13 @@ void MyDataStore::addToCart(std::string username, Product* p)
 
 void MyDataStore::viewCart(std::string username, std::ostream& ofile)
 {
+	std::queue<Product*> tmp = d_userCart[username]; //copy the original queue to the temporary queue
+
 	size_t i = 0;
-	for (auto product : d_userCart[username]) {
+	while (!tmp.empty()) {
+		Product* product = tmp.front();
 		ofile << i++ << ": " << product->displayString() << "\n";
+		tmp_q.pop();
 	}
 }
 
@@ -82,7 +86,7 @@ void MyDataStore::buyCart(std::string username)
 	while (!d_userCart[username].empty()) {
 		Product* product = d_userCart[username].front();
 		d_userCart[username].pop();
-		if (product->getPrice() > d_user[username]->getBalance() || product->getQty <= 0) {
+		if (product->getPrice() > d_user[username]->getBalance() || product->getQty() <= 0) {
 			leftoverItems.push(product);
 			continue;
 		}
