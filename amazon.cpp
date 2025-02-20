@@ -107,8 +107,8 @@ int main(int argc, char* argv[])
                 std::string hit_result_index;
                 if (ss >> username >> hit_result_index) {
                     std::transform(username.begin(), username.end(), username.begin(), [](unsigned char c) { return std::tolower(c); });
-                    if (ds.isValidUsername(username) && std::stoi(hit_result_index) < hits.size()) {
-                        ds.addToCart(username, hits[hit_result_index]);
+                    if (ds.isValidUsername(username) && static_cast<unsigned int>(std::stoi(hit_result_index)) < hits.size()) {
+                        ds.addToCart(username, hits[std::stoi(hit_result_index)]);
                     }
                     else {
                         std::cout << "Invalid request" << std::endl;
