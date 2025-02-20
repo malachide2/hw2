@@ -18,7 +18,7 @@ void MyDataStore::addProduct(Product* p)
 
 void MyDataStore::addUser(User* u)
 {
-	d_userCart.emplace(u, std::deque<Product*>());
+	d_userCart.emplace(u, std::queue<Product*>());
 }
 
 std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int type)
