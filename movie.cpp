@@ -16,13 +16,8 @@ Movie::~Movie() {}
 
 std::set<std::string> Movie::keywords() const
 {
-	std::string tmpName = name_;
-	std::string tmpGenre = d_genre;
-	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), [](unsigned char c) { return std::tolower(c); });
-	std::transform(tmpGenre.begin(), tmpGenre.end(), tmpGenre.begin(), [](unsigned char c) { return std::tolower(c); });
-
-	std::set<std::string> output = parseStringToWords(tmpName);
-	output.insert(tmpGenre);
+	std::set<std::string> output = parseStringToWords(convToLower(name_));
+	output.insert(convToLower(d_genre));
 	return output;
 }
 

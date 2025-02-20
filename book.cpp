@@ -14,17 +14,10 @@ Book::~Book() {}
 
 std::set<std::string> Book::keywords() const
 {
-	std::string tmpName = name_;
-	std::string tmpAuthor = d_author;
-	std::string tmpISBN = d_ISBN;
-	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), [](unsigned char c) { return std::tolower(c); });
-	std::transform(tmpAuthor.begin(), tmpAuthor.end(), tmpAuthor.begin(), [](unsigned char c) { return std::tolower(c); });
-	std::transform(tmpISBN.begin(), tmpISBN.end(), tmpISBN.begin(), [](unsigned char c) { return std::tolower(c); });
-	
-	std::set<std::string> nameKeywords = parseStringToWords(tmpName);
-	std::set<std::string> authorKeywords = parseStringToWords(tmpAuthor);
+	std::set<std::string> nameKeywords = parseStringToWords(convToLower(name_));
+	std::set<std::string> authorKeywords = parseStringToWords(convToLower(d_author));
 	std::set<std::string> output = setUnion(nameKeywords, authorKeywords);
-	output.insert(tmpISBN);
+	output.insert(convToLower(d_ISBN));
 	return output;
 }
 

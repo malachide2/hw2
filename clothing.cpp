@@ -16,13 +16,8 @@ Clothing::~Clothing() {}
 
 std::set<std::string> Clothing::keywords() const
 {
-	std::string tmpName = name_;
-	std::string tmpBrand = d_brand;
-	std::transform(tmpName.begin(), tmpName.end(), tmpName.begin(), [](unsigned char c) { return std::tolower(c); });
-	std::transform(tmpBrand.begin(), tmpBrand.end(), tmpBrand.begin(), [](unsigned char c) { return std::tolower(c); });
-	
-	std::set<std::string> nameKeywords = parseStringToWords(tmpName);
-	std::set<std::string> brandKeywords = parseStringToWords(tmpBrand);
+	std::set<std::string> nameKeywords = parseStringToWords(convToLower(name_));
+	std::set<std::string> brandKeywords = parseStringToWords(convToLower(d_brand));
 	return setUnion(nameKeywords, brandKeywords);
 }
 
