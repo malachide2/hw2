@@ -37,19 +37,19 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 	std::set<Product*>	  outputSet;
 	bool tmpFlag = false; // Used in intersection to see if at least one set has been found
 	for (auto& term : terms) {
-		if (d_keywordMapping.find(term) == d_keywordMapping.end())
-			continue;
 		if (type == 0) {
+			if (d_keywordMapping.find(term) == d_keywordMapping.end())
+				break;
 			if (!tmpFlag) {
 				outputSet = d_keywordMapping[term];
 				tmpFlag = true;
+				continue;
 			}
-			else {
-				outputSet = setIntersection(outputSet, d_keywordMapping[term]);
-			}
+			outputSet = setIntersection(outputSet, d_keywordMapping[term]);
 		}
 		else {
-			outputSet = setUnion(outputSet, d_keywordMapping[term]);
+			if (d_keywordMapping.find(term) != d_keywordMapping.end())
+				outputSet = setUnion(outputSet, d_keywordMapping[term]);
 		}
 	}
 
