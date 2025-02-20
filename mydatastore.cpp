@@ -76,7 +76,7 @@ void MyDataStore::viewCart(std::string username, std::ostream& ofile)
 	while (!tmp.empty()) {
 		Product* product = tmp.front();
 		ofile << i++ << ": " << product->displayString() << "\n";
-		tmp_q.pop();
+		tmp.pop();
 	}
 }
 
