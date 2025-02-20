@@ -10,7 +10,7 @@ void MyDataStore::addProduct(Product* p)
 {
 	for (auto& keyword : p->keywords()) {
 		if (d_keywordMapping.find(keyword) == d_keywordMapping.end())
-			d_keywordMapping.emplace(keyword, std::vector<Product*>);
+			d_keywordMapping.emplace(keyword, std::vector<Product*>());
 		d_keywordMapping[keyword].insert(p);
 	}
 	d_products.insert(p);
@@ -18,7 +18,7 @@ void MyDataStore::addProduct(Product* p)
 
 void MyDataStore::addUser(User* u)
 {
-	d_userCart.emplace(u, std::deque<Product*>>);
+	d_userCart.emplace(u, std::deque<Product*>());
 }
 
 std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int type)
