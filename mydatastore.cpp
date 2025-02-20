@@ -1,11 +1,6 @@
 #include "mydatastore.h"
 #include "util.h"
 
-MyDataStore::MyDataStore()
-{
-
-}
-
 MyDataStore::~MyDataStore()
 {
 
@@ -23,7 +18,8 @@ void MyDataStore::addProduct(Product* p)
 
 void MyDataStore::addUser(User* u)
 {
-	d_userCart.emplace(u, std::queue<Product*>());
+	d_user.emplace(u->getName(), u);
+	d_userCart.emplace(u->getName(), std::queue<Product*>());
 }
 
 std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int type)
@@ -61,8 +57,23 @@ void MyDataStore::dump(std::ostream& ofile)
 		product->dump(ofile);
 	}
 	ofile << "</products>\n<users>\n";
-	for (auto userPair : d_userCart) {
-		userPair.first->dump(ofile);
+	for (auto userPair : d_user) {
+		userPair.second->dump(ofile);
 	}
 	ofile << "</users>";
+}
+
+void MyDataStore::addToCart(std::string username, Product* p)
+{
+
+}
+
+void MyDataStore::viewCart(std::string username)
+{
+
+}
+
+void MyDataStore::buyCart(std::string username)
+{
+
 }
