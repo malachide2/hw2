@@ -11,8 +11,9 @@ public:
 	std::vector<Product*> search(std::vector<std::string>& terms, int type) override;
 	void dump(std::ostream& ofile) override;
 	void addToCart(std::string username, Product* p);
-	void viewCart(std::string username);
+	void viewCart(std::string username, std::ostream& ofile);
 	void buyCart(std::string username);
+	bool isValidUsername(std::string username);
 private:
 	std::unordered_map<std::string, User*>				  d_user;
 	std::unordered_map<std::string, std::queue<Product*>> d_userCart;

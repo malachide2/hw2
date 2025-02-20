@@ -65,15 +65,34 @@ void MyDataStore::dump(std::ostream& ofile)
 
 void MyDataStore::addToCart(std::string username, Product* p)
 {
-
+	d_userCart[username].push(p);
 }
 
-void MyDataStore::viewCart(std::string username)
+void MyDataStore::viewCart(std::string username, std::ostream& ofile)
 {
-
+	size_t i = 0;
+	for (auto product : d_userCart[username]) {
+		ofile << i++ << ": " << product->displayString() << "\n";
+	}
 }
 
 void MyDataStore::buyCart(std::string username)
 {
+	std::queue<Product*> leftoverItems;
+	while (!d_userCart[username].empty()) {
+		Product* product = d_userCart[username].front();
+		d_userCart[username].pop();
+		if (product->getPrice() > d_user[username]->getBalance() || product->getQty <= 0) {
+			leftoverItems.push(product);
+			continue;
+		}
+		d_user[username]->deductAmount(product->getPrice());
+		product->subtractQty(1);
+	}
+	d_userCart[username] = leftoverItems;
+}
 
+bool MyDataStore::isValidUsername(std::string username)
+{
+	return (d_user.find(username) != d_user.end());
 }
