@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
                 std::string username;
                 std::string hit_result_index;
                 if (ss >> username >> hit_result_index) {
-                    if (ds.isValidUsername(convToLower(username)) && std::stoul(hit_result_index)) < hits.size()) {
+                    if (ds.isValidUsername(convToLower(username)) && std::stoul(hit_result_index) < hits.size()) {
                         ds.addToCart(convToLower(username), hits[std::stoi(hit_result_index)]);
                     }
                     else {
