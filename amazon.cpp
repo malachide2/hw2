@@ -106,9 +106,8 @@ int main(int argc, char* argv[])
                 std::string username;
                 std::string hit_result_index;
                 if (ss >> username >> hit_result_index) {
-                    std::transform(username.begin(), username.end(), username.begin(), [](unsigned char c) { return std::tolower(c); });
-                    if (ds.isValidUsername(username) && static_cast<unsigned int>(std::stoi(hit_result_index)) < hits.size()) {
-                        ds.addToCart(username, hits[std::stoi(hit_result_index)]);
+                    if (ds.isValidUsername(convToLower(username)) && static_cast<unsigned int>(std::stoi(hit_result_index)) < hits.size()) {
+                        ds.addToCart(convToLower(username), hits[std::stoi(hit_result_index)]);
                     }
                     else {
                         std::cout << "Invalid request" << std::endl;
@@ -121,9 +120,8 @@ int main(int argc, char* argv[])
             else if (cmd == "VIEWCART") {
                 std::string username;
                 if (ss >> username) {
-                    std::transform(username.begin(), username.end(), username.begin(), [](unsigned char c) { return std::tolower(c); });
-                    if (ds.isValidUsername(username)) {
-                        ds.viewCart(username, std::cout);
+                    if (ds.isValidUsername(convToLower(username))) {
+                        ds.viewCart(convToLower(username), std::cout);
                     }
                     else {
                         std::cout << "Invalid username" << std::endl;
@@ -136,9 +134,8 @@ int main(int argc, char* argv[])
             else if (cmd == "BUYCART") {
                 std::string username;
                 if (ss >> username) {
-                    std::transform(username.begin(), username.end(), username.begin(), [](unsigned char c) { return std::tolower(c); });
-                    if (ds.isValidUsername(username)) {
-                        ds.buyCart(username);
+                    if (ds.isValidUsername(convToLower(username))) {
+                        ds.buyCart(convToLower(username));
                     }
                     else {
                         std::cout << "Invalid username" << std::endl;
