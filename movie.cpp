@@ -33,5 +33,5 @@ std::string Movie::displayString() const
 
 void Movie::dump(std::ostream& os) const
 {
-	os << "movie\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << d_genre << "\n" << d_rating;
+	os << "movie\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << d_genre << "\n" << d_rating << "\n";
 }
