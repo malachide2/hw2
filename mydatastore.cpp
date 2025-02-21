@@ -80,7 +80,7 @@ void MyDataStore::viewCart(std::string username, std::ostream& ofile)
 {
 	std::queue<Product*> tmp = d_userCart[username]; //copy the original queue to the temporary queue
 
-	size_t i = 0;
+	size_t i = 1;
 	while (!tmp.empty()) {
 		Product* product = tmp.front();
 		ofile << i++ << ": " << product->displayString() << "\n";
