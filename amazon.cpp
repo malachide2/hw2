@@ -138,9 +138,6 @@ int main(int argc, char* argv[])
                         std::cout << "Invalid username" << std::endl;
                     }
                 }
-                else {
-                    std::cout << "Invalid request" << std::endl;
-                }
             }
             else {
                 cout << "Unknown command" << endl;
