@@ -24,10 +24,10 @@ template <typename T>
 std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2)
 {
 	std::set<T> output;
-	for (T& element : s1) {
+	for (T element : s1) {
 		output.insert(element);
 	}
-	for (T& element : s2) {
+	for (T element : s2) {
 		output.insert(element);
 	}
 	return output;
