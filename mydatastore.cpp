@@ -49,15 +49,16 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 		}
 		else {
 			if (d_keywordMapping.find(term) != d_keywordMapping.end())
+				for (auto product : d_keywordMapping) {
+					std::cout << product->getName();
+				}
 				outputSet = setUnion(outputSet, d_keywordMapping[term]);
 		}
 	}
 
 	for (auto product : outputSet) {
-		std::cout << product->getName();
 		output.push_back(product);
 	}
-	std::cout << std::endl;
 	return output;
 }
 
