@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
                 std::string hit_result_index;
                 if (ss >> username >> hit_result_index) {
                     if (ds.isValidUsername(convToLower(username))) {
-                        ds.addToCart(convToLower(username), hits[std::stoi(hit_result_index)]);
+                        ds.addToCart(convToLower(username), hits[std::stoi(hit_result_index) - 1]);
                     }
                     else {
                         std::cout << "Invalid request" << std::endl;
