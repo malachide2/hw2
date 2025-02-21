@@ -110,11 +110,11 @@ int main(int argc, char* argv[])
                         ds.addToCart(convToLower(username), hits[std::stoi(hit_result_index)]);
                     }
                     else {
-                        std::cout << "Invalid request" << std::endl;
+                        std::cout << "Invalid request 1" << std::endl;
                     }
                 }
                 else {
-                    std::cout << "Invalid request" << std::endl;
+                    std::cout << "Invalid request 2" << std::endl;
                 }
             }
             else if (cmd == "VIEWCART") {
@@ -124,11 +124,11 @@ int main(int argc, char* argv[])
                         ds.viewCart(convToLower(username), std::cout);
                     }
                     else {
-                        std::cout << "Invalid username" << std::endl;
+                        std::cout << "Invalid username 3" << std::endl;
                     }
                 }
                 else {
-                    std::cout << "Invalid request" << std::endl;
+                    std::cout << "Invalid request 4" << std::endl;
                 }
             }
             else if (cmd == "BUYCART") {
@@ -138,11 +138,11 @@ int main(int argc, char* argv[])
                         ds.buyCart(convToLower(username));
                     }
                     else {
-                        std::cout << "Invalid username" << std::endl;
+                        std::cout << "Invalid username 5" << std::endl;
                     }
                 }
                 else {
-                    std::cout << "Invalid request" << std::endl;
+                    std::cout << "Invalid request 6" << std::endl;
                 }
             }
             else {
