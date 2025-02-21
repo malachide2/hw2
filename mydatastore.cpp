@@ -21,15 +21,6 @@ void MyDataStore::addProduct(Product* p)
 		d_keywordMapping[keyword].insert(p);
 	}
 	d_products.insert(p);
-
-	for (auto& keywordPair : d_keywordMapping) {
-		std::cout << keywordPair.first << "\n\n";
-		for (auto product : keywordPair.second) {
-			std::cout << product->displayString();
-		}
-		std::cout << "\n\n\n";
-	}
-	std::cout << "\n\n\n\n\n\n\n\n\n\n";
 }
 
 void MyDataStore::addUser(User* u)
@@ -55,6 +46,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 			outputSet = setIntersection(outputSet, d_keywordMapping[term]);
 		}
 		else {
+			std::cout << term << std::endl;
 			if (d_keywordMapping.find(term) != d_keywordMapping.end()) {
 				for (auto product : d_keywordMapping[term]) {
 					std::cout << product->getName() << std::endl;
