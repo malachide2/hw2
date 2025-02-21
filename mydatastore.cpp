@@ -4,18 +4,18 @@
 
 MyDataStore::~MyDataStore()
 {
-	for (auto product : d_products) {
+	for (Product* product : d_products) {
 		delete product;
 	}
 
-	for (auto userPair : d_user) {
+	for (std::pair<std::string, User*> userPair : d_user) {
 		delete userPair.second;
 	}
 }
 
 void MyDataStore::addProduct(Product* p)
 {
-	for (auto& keyword : p->keywords()) {
+	for (std::string& keyword : p->keywords()) {
 		if (d_keywordMapping.find(keyword) == d_keywordMapping.end())
 			d_keywordMapping.emplace(keyword, std::set<Product*>());
 		d_keywordMapping[keyword].insert(p);
@@ -55,7 +55,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 		}
 	}
 
-	for (auto product : outputSet) {
+	for (Product* product : outputSet) {
 		output.push_back(product);
 	}
 	return output;
@@ -64,11 +64,11 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 void MyDataStore::dump(std::ostream& ofile)
 {
 	ofile << "<products>\n";
-	for (auto product : d_products) {
+	for (Product* product : d_products) {
 		product->dump(ofile);
 	}
 	ofile << "</products>\n<users>\n";
-	for (auto userPair : d_user) {
+	for (std::pair<std::string, User*> userPair : d_user) {
 		userPair.second->dump(ofile);
 	}
 	ofile << "</users>";
@@ -86,7 +86,7 @@ void MyDataStore::viewCart(std::string username, std::ostream& ofile)
 	size_t i = 1;
 	while (!tmp.empty()) {
 		Product* product = tmp.front();
-		ofile << i++ << ": " << product->displayString() << "\n";
+		ofile << "Item " << i++ << "\n" << product->displayString() << "\n";
 		tmp.pop();
 	}
 }
