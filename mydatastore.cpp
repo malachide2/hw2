@@ -15,7 +15,7 @@ MyDataStore::~MyDataStore()
 
 void MyDataStore::addProduct(Product* p)
 {
-	for (std::string& keyword : p->keywords()) {
+	for (std::string keyword : p->keywords()) {
 		if (d_keywordMapping.find(keyword) == d_keywordMapping.end())
 			d_keywordMapping.emplace(keyword, std::set<Product*>());
 		d_keywordMapping[keyword].insert(p);
