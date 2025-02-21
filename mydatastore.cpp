@@ -39,7 +39,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 	for (auto& term : terms) {
 		if (type == 0) {
 			if (d_keywordMapping.find(term) == d_keywordMapping.end())
-				break;
+				return output;
 			if (!tmpFlag) {
 				outputSet = d_keywordMapping[term];
 				tmpFlag = true;
@@ -54,8 +54,10 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 	}
 
 	for (auto product : outputSet) {
+		std::cout << product->getName();
 		output.push_back(product);
 	}
+	std::cout << std::endl;
 	return output;
 }
 
