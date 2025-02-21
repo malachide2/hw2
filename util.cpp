@@ -16,7 +16,6 @@ std::set<std::string> parseStringToWords(std::string rawWords)
 {
     std::set<std::string> output;
     std::string           currString;
-    currString.resize(rawWords.size());
 
     for (auto character : rawWords) {
         if (ispunct(character) || character == ' ') {
