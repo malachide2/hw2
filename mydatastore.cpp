@@ -25,7 +25,7 @@ void MyDataStore::addProduct(Product* p)
 	for (auto& keywordPair : d_keywordMapping) {
 		std::cout << keywordPair.first << "\n\n";
 		for (auto product : keywordPair.second) {
-			std::cout << product->displayString;
+			std::cout << product->displayString();
 		}
 		std::cout << "\n\n\n"
 	}
