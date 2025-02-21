@@ -24,7 +24,7 @@ std::set<std::string> Clothing::keywords() const
 	for (auto& keyword : brandKeywords) {
 		std::cout << keyword << "\n";
 	}
-	std::cout << std:endl << std::endl;
+	std::cout << std::endl << std::endl;
 	return setUnion(nameKeywords, brandKeywords);
 }
 
