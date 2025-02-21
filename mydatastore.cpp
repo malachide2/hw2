@@ -16,13 +16,20 @@ MyDataStore::~MyDataStore()
 void MyDataStore::addProduct(Product* p)
 {
 	for (auto& keyword : p->keywords()) {
-		std::cout << keyword << " | ";
 		if (d_keywordMapping.find(keyword) == d_keywordMapping.end())
 			d_keywordMapping.emplace(keyword, std::set<Product*>());
 		d_keywordMapping[keyword].insert(p);
 	}
-	std::cout << std::endl;
 	d_products.insert(p);
+
+	for (auto& keywordPair : d_keywordMapping) {
+		std::cout << keywordPair.first << "\n\n";
+		for (auto product : keywordPair.second) {
+			std::cout << product->displayString;
+		}
+		std::cout << "\n\n\n"
+	}
+	std::cout << "\n\n\n\n\n\n\n\n\n\n";
 }
 
 void MyDataStore::addUser(User* u)
