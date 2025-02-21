@@ -45,7 +45,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 		for (size_t i = 1; i < terms.size(); i++) {
 			if (d_keywordMapping.find(terms[i]) == d_keywordMapping.end())
 				return output;
-			outputSet = setIntersection(outputSet, d_keywordMapping[terms[i]);
+			outputSet = setIntersection(outputSet, d_keywordMapping[terms[i]]);
 		}
 	}
 	else {

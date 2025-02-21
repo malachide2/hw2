@@ -14,7 +14,7 @@ template <typename T>
 std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 {
 	std::set<T> output;
-	for (T& element : s1) {
+	for (T element : s1) {
 		if (s2.find(element) != s2.end())
 			output.insert(element);
 	}
