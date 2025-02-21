@@ -27,7 +27,7 @@ void MyDataStore::addProduct(Product* p)
 		for (auto product : keywordPair.second) {
 			std::cout << product->displayString();
 		}
-		std::cout << "\n\n\n"
+		std::cout << "\n\n\n";
 	}
 	std::cout << "\n\n\n\n\n\n\n\n\n\n";
 }
