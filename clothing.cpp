@@ -18,6 +18,13 @@ std::set<std::string> Clothing::keywords() const
 {
 	std::set<std::string> nameKeywords = parseStringToWords(convToLower(name_));
 	std::set<std::string> brandKeywords = parseStringToWords(convToLower(d_brand));
+	for (auto& keyword : nameKeywords) {
+		std::cout << keyword << "\n";
+	}
+	for (auto& keyword : brandKeywords) {
+		std::cout << keyword << "\n";
+	}
+	std::cout << std:endl << std::endl;
 	return setUnion(nameKeywords, brandKeywords);
 }
 
