@@ -16,10 +16,12 @@ MyDataStore::~MyDataStore()
 void MyDataStore::addProduct(Product* p)
 {
 	for (auto& keyword : p->keywords()) {
+		std::cout << keyword << " | ";
 		if (d_keywordMapping.find(keyword) == d_keywordMapping.end())
 			d_keywordMapping.emplace(keyword, std::set<Product*>());
 		d_keywordMapping[keyword].insert(p);
 	}
+	std::cout << std::endl;
 	d_products.insert(p);
 }
 
@@ -73,14 +75,11 @@ void MyDataStore::dump(std::ostream& ofile)
 void MyDataStore::addToCart(std::string username, Product* p)
 {
 	d_userCart[username].push(p);
-	std::cout << d_userCart[username].front()->getName() << " added." << std::endl;
 }
 
 void MyDataStore::viewCart(std::string username, std::ostream& ofile)
 {
-	std::cout << "Made it here" << std::endl;
 	std::queue<Product*> tmp = d_userCart[username]; //copy the original queue to the temporary queue
-	std::cout << tmp.front()->getName() << " added." << std::endl;
 
 	size_t i = 0;
 	while (!tmp.empty()) {
